@@ -1,21 +1,99 @@
-<img src="https://raw.githubusercontent.com/geerlingguy/mac-dev-playbook/master/files/Mac-Dev-Playbook-Logo.png" width="250" height="156" alt="Mac Dev Playbook Logo" />
-
 # Mac Development Ansible Playbook
 
 [![CI][badge-gh-actions]][link-gh-actions]
 
-This playbook installs and configures most of the software I use on my Mac for web and software development. Some things in macOS are slightly difficult to automate, so I still have a few manual installation steps, but at least it's all documented here.
+This playbook installs and configures most of the software needed to get you up and running for web development
+
+## Prerequisites
+
+### SSH Key Pairs
+Most of the connections to development services (such as GitHub, Virtual Machines) will be done via SSH, before setting up the environment generate a new key and add it to the relevant services.
+
+**Generate local SSH Key Pair**
+
+Make the .ssh directory if it doesn't exist
+
+```
+mkdir ~/.ssh && cd ~/.ssh
+```
+
+Generate a new SSH key
+```
+ssh-keygen -t ed25519 -C "your_email@example.com"
+```
+
+Enter a password for the keypair, and remember where this keypair is stored, for example `/Users/{your_username}/.ssh/id_ed25519`
+
+**Add SSH Key to ssh-agent**
+
+Create your ssh config file
+
+```
+touch ~/.ssh/config
+```
+
+Add your key to the ssh config file:
+
+```
+nano ~/.ssh/config
+```
+
+```
+Host *
+  AddKeysToAgent yes
+  UseKeychain yes
+  IdentityFile ~/.ssh/id_ed25519
+```
+
+Add your SSH private key to the ssh-agent and store your passphrase in the keychain
+
+```
+ssh-add -K ~/.ssh/id_ed25519
+```
+
+Copy the contents of your public key to your clipboard and add this to all the required services such as Github, Bitbucket and Virtual Machines / Bastions
+
+```
+pbcopy < ~/.ssh/id_ed25519.pub
+```
+
+### Install Apple's Command Line Tools
+
+```
+xcode-select --install
+```
+
+### Install HomeBrew
+```
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)”
+```
+
+For upto date installation instructions visit the [HomeBrew Installation page](https://brew.sh/)
+
+### Install Python3
+```
+brew install python3
+```
+
+### Install / Update PIP**
+```
+pip3 install --upgrade pip
+```
+
+### Install Ansible
+```
+pip3 install ansible
+```
+
+### Install Git Command Line**
+```
+brew install git
+```
 
 ## Installation
 
-  1. Ensure Apple's command line tools are installed (`xcode-select --install` to launch the installer).
-  2. [Install Ansible](https://docs.ansible.com/ansible/latest/installation_guide/index.html):
-
-     1. Run the following command to add Python 3 to your $PATH: `export PATH="$HOME/Library/Python/3.8/bin:/opt/homebrew/bin:$PATH"`
-     2. Upgrade Pip: `sudo pip3 install --upgrade pip`
-     3. Install Ansible: `pip3 install ansible`
-
-  3. Clone or download this repository to your local drive.
+  1. If this is the first provision you'll need to configure the prerequisites for this repo
+  2. Clone or download this repository to your local drive.
   4. Run `ansible-galaxy install -r requirements.yml` inside this directory to install required Ansible roles.
   5. Run `ansible-playbook main.yml --ask-become-pass` inside this directory. Enter your macOS account password when prompted for the 'BECOME' password.
 
