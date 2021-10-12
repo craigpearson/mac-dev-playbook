@@ -57,6 +57,11 @@ Copy the contents of your public key to your clipboard and add this to all the r
 pbcopy < ~/.ssh/id_ed25519.pub
 ```
 
+Test Github access:
+```
+ssh -T git@github.com
+```
+
 ### Install Apple's Command Line Tools
 
 ```
