@@ -87,7 +87,7 @@ pip3 install --upgrade pip
 
 ### Install Ansible
 ```
-pip3 install ansible
+pip3 install 'ansible==2.9.10'
 ```
 
 ### Install Git Command Line**
