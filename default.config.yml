@@ -1,7 +1,7 @@
 ---
 downloads: ~/.ansible-downloads/
 
-configure_dotfiles: true
+configure_dotfiles: false
 configure_osx: true
 
 dotfiles_repo: https://github.com/craigpearson/dotfiles.git
@@ -49,7 +49,7 @@ homebrew_cask_apps:
   - cyberduck
   - forticlient-vpn
   - vlc
-  - poweshell
+  - powershell
   - alfred
   - tower
   - transmit
