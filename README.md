@@ -80,6 +80,11 @@ For upto date installation instructions visit the [HomeBrew Installation page](h
 brew install python3
 ```
 
+Add python to path
+```
+export PATH=$PATH:~/Library/Python/3.8/bin
+```
+
 ### Install / Update PIP**
 ```
 pip3 install --upgrade pip
@@ -87,7 +92,7 @@ pip3 install --upgrade pip
 
 ### Install Ansible
 ```
-pip3 install 'ansible==2.9.10'
+pip3 install 'ansible-core==2.11.6'
 ```
 
 ### Install Git Command Line**
@@ -97,8 +102,19 @@ brew install git
 
 ### Clone this repo
 ```
+mkdir ~/code
 cd ~/code/ && git clone git@github.com:craigpearson/mac-dev-playbook.git
+cd mac-dev-playbook
 ```
+
+### Install Galaxy Dependancies
+
+`ansible-galaxy install -r requirements.yml`
+`ansible-galaxy collection install geerlingguy.mac`
+
+### Run the installation playbook
+
+`ansible-playbook main.yml --ask-become-pass`
 
 ## Installation
 
