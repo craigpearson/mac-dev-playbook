@@ -95,6 +95,11 @@ pip3 install 'ansible==2.9.10'
 brew install git
 ```
 
+### Clone this repo
+```
+cd ~/code/ && git clone git@github.com:craigpearson/mac-dev-playbook.git
+```
+
 ## Installation
 
   1. If this is the first provision you'll need to configure the prerequisites for this repo
