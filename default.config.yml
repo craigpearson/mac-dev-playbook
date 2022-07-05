@@ -42,7 +42,6 @@ homebrew_cask_apps:
   - slack
   - rectangle
   - vagrant
-  - virtualbox
   - spotify
   - the-unarchiver
   - dash
