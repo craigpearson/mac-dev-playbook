@@ -22,6 +22,7 @@ homebrew_installed_packages:
   - ssh-copy-id
   - openssl
   - yarn
+  - mackup
 
 homebrew_taps:
   - homebrew/core
@@ -55,7 +56,6 @@ homebrew_cask_apps:
   - transmit
   - whatsapp
   - nordvpn
-  - mackup
 
 
 # See `geerlingguy.mas` role documentation for usage instructions.
